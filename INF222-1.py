@@ -35,7 +35,8 @@ def variancia(valores):
 def coeficiente_variacao(valores):
     return (desvo_padrao(valores) / media(valores)) * 100
 
-valores_ator = '''44 41 62 52 41 34
+valores_ator = '''
+44 41 62 52 41 34
 34 52 41 37 38 34
 32 40 43 56 41 39
 49 57 41 38 42 52
@@ -47,9 +48,11 @@ valores_ator = '''44 41 62 52 41 34
 39 53 45 36 62 43
 51 32 42 54 52 37
 38 32 45 60 46 40
-36 47 29 43'''
+36 47 29 43
+'''
 
 valores_ator = [int(x) for x in valores_ator.split()]
+print('Valores:', valores_ator)
 
 print('Média:', media(valores_ator))
 print('Mediana:', mediana(valores_ator))
