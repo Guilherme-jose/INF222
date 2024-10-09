@@ -62,3 +62,34 @@ print('Amplitude:', amplitude(valores_ator))
 print('Desvio padrão:', desvo_padrao(valores_ator))
 print('Variância:', variancia(valores_ator))
 print('Coeficiente de variação:', coeficiente_variacao(valores_ator))
+
+def tabela(valores, min, max, intervalo):
+    tabela = {}
+    
+    tabela['<={}'.format(min)] = 0
+    for i in range(min, max, intervalo):
+        tabela[f'{i+1}-{i+intervalo}'] = 0
+    tabela['>={}'.format(max+1)] = 0
+
+    for valor in valores:
+        if valor <= min:
+            tabela['<={}'.format(min)] += 1
+        elif valor >= max:
+            tabela['>={}'.format(max+1)] += 1
+        else:
+            for i in range(min, max, intervalo):
+                if i < valor <= i + intervalo:
+                    tabela[f'{i+1}-{i+intervalo}'] += 1
+                    break
+    
+    print(f'{"Idade":>8} | {"F":>10} |  {"Fr":>10} | {"Fac":>10} | {"Frac":>10}')
+    cumulativa = 0
+    cumulativa_percentual = 0
+    for intervalo, frequencia in tabela.items():
+        porcentagem = (frequencia / len(valores)) * 100
+        cumulativa += frequencia
+        cumulativa_percentual += porcentagem
+        print(f'{intervalo:>8} | {frequencia:>10} | {porcentagem:>10.2f}% | {cumulativa:>10} | {cumulativa_percentual:>10.2f}%')
+    
+        
+tabela(valores_ator, 30, 70, 10)
