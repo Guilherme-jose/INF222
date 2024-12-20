@@ -1,10 +1,11 @@
 #--------------------------------------------
 # 2.a.
+print("2.a.")
 
 import pandas as pd
 
 
-data = pd.read_csv('/home/guilherme/INF222/EX8/dados.csv')
+data = pd.read_csv('dados.csv')
 print(data.head())
 
 data_2018 = data[['País', '2018']]
@@ -35,6 +36,9 @@ print(f"W: {W}")
 
 #--------------------------------------------
 # 2.b.
+print('-'*20)
+print('b.')
+
 
 paises_europa = [
     'Albânia', 'Alemanha', 'Andorra', 'Armênia', 'Áustria', 'Azerbaijão', 'Bélgica', 'Bielorrússia', 
@@ -67,6 +71,11 @@ print(f"W: {W}")
 
 #--------------------------------------------
 # 2.c.
+
+print('-'*20)
+print('c.')
+
+
 def merge(a, b, size):
     merged_from = []
     merged = []
@@ -117,8 +126,12 @@ print(f"valores ordenados europa: {data_europe}")
 merged, merged_from = merge(data_south_america, data_europe, 10)
 
 
-print(f"Merged: {merged}")
-print(f"Merged from: {merged_from}")
+for i, value in enumerate(merged):
+    if merged_from[i] == '0':
+        print(f"\033[4m{value}\033[0m", end=' ')
+    else:
+        print(value, end=' ')
+print()
 
 
 U = 0
@@ -133,6 +146,10 @@ print(f"U: {U}")
 
 #--------------------------------------------
 # 2.d.
+print('-'*20)
+print('d.')
+
+
 '''
 paises_africa = [
     'África do Sul', 'Angola', 'Argélia', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 'Cabo Verde', 
@@ -165,8 +182,12 @@ print(f"valores ordenados africa: {data_africa}")
 
 merged, merged_from = merge(data_south_america, data_africa, 10)
 
-print(f"Merged: {merged}")
-print(f"Merged from: {merged_from}")
+for i, value in enumerate(merged):
+    if merged_from[i] == '1':
+        print(f"\033[4m{value}\033[0m", end=' ')
+    else:
+        print(value, end=' ')
+print()
 
 U = 0
 for i in range(20):

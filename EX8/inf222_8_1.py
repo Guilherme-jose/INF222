@@ -5,6 +5,7 @@ from scipy.stats import wilcoxon
 from scipy.stats import binom
 import pandas as pd
 
+print('a.')
 
 valores_atrizes = '''22 37 28 63 32 26
 31 27 27 28 30 26
@@ -43,6 +44,9 @@ print(f"Valor p: {valor_p}")
 #--------------------------------------------
 # b.
 
+print('-'*20)
+print('b.')
+
 random_values = [value - 33.5 for value in random_values]
 random_values.sort(key=abs)
 
@@ -64,6 +68,10 @@ print(f"Valor p: {valor_p}")
 
 #--------------------------------------------
 # c.
+
+print('-'*20)
+print('c.')
+
 valores_atores ='''
 44 41 62 52 41 34
 34 52 41 37 38 34
@@ -120,8 +128,15 @@ def merge(a, b, size):
     return merged, merged_from
 
 merged, merged_from = merge(random_values_atores, random_values_atrizes, 10)
-print(f"Merged: {merged}")
-print(f"Merged from: {merged_from}")
+
+
+for i, value in enumerate(merged):
+    if merged_from[i] == '0':
+        print(f"\033[4m{value}\033[0m", end=' ')
+    else:
+        print(value, end=' ')
+print()
+
 
 U = 0
 for i in range(20):
